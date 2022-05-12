@@ -1,0 +1,186 @@
+#+TITLE: My Emacs Config
+#+AUTHOR: Arunlal
+
+* PACKAGE MANAGEMENT
+  ** Setup package.el to work with MELPA
+  #+BEGIN_SRC emacs-lisp
+  (require 'package)
+  (add-to-list 'package-archives
+  '("melpa" . "https://melpa.org/packages/"))
+  (package-refresh-contents)
+  (package-initialize)
+  #+END_SRC
+  ** Installing use-package
+  #+BEGIN_SRC emacs-lisp
+  (unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+  #+END_SRC
+#* GENERAL KEYBINGINGS
+  #+BEGIN_SRC emacs-lisp
+  (use-package general
+    :ensure t
+    :config
+  (general-evil-setup t))
+  (nvmap :prefix "SPC"
+    "SPC" '(counsel-M-x :which-key "M-x")
+    "." '(find-file :which-key "Find file")
+    ;;Buffers
+    "b b" '(ibuffer :which-key "IBuffer")
+    "b k" '(kill-current-buffer :which-key "Kill current buffer")
+    "b n" '(next-buffer :which-key "Next buffer")
+    "b p" '(previous-buffer :which-key "Previous buffer")
+    "b B" '(ibuffer-list-buffers :which-key "IBuffer list buffers")
+    "b K" '(kill-buffer :which-key "Kill buffer")
+    ;;Eshell
+    "e h" '(counsel-esh-history :which-key "Eshell history")
+    "e s" '(eshell :which-key "Eshell")
+    "f r" '(counsel-recentf :which-key "Recent files")
+    "h r r" '((lambda () (interactive) (load-file "~/.emacs.d/init.el")) :whick-key "Reload emacs configuration")
+    "t t" '(toggle-truncate-lines :which-key "Toggle truncate lines")
+    ;;Windows motions
+    "w c" '(evil-window-delete :which-key "Close window")
+    "w n" '(evil-window-new :which-key "New window")
+    "w s" '(evil-window-split :which-key "Horizontal split window")
+    "w v" '(evil-window-vsplit :which-key "Vertical split window")
+    ;;Windows motions
+    "w h" '(evil-window-left :which-key "Goto left window")
+    "w j" '(evil-window-down :which-key "Goto down window")
+    "w k" '(evil-window-up :which-key "Goto up window")
+    "w l" '(evil-window-right :which-key "Goto right window")
+    "w w" '(evil-window-next :which-key "Goto next window"))
+  #+END_SRC
+* DASHBOARD
+  Emacs dashboard is an extensible startup screen showing you recent files, bookmarks, agenda items, and an Emacs banner.
+  #+BEGIN_SRC emacs-lisp
+  (use-package dashboard
+  :ensure t ;;install dashboard if not installed
+  :init ;; tweak dashboard's configuration before loading it
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-banner-logo-title "Keep Walking!")
+  (setq dashboard-startup-banner "~/.emacs.d/keep-walking.png")
+  (setq dashboard-center-content nil)
+  (setq dashboard-items '(
+      (recents . 10)
+      (agenda . 5)
+      (bookmarks . 5)
+      (projects . 5)
+      (registers . 5)
+  ))
+  :config
+  (dashboard-setup-startup-hook)
+  (dashboard-modify-heading-icons '(
+    (recents. "file-text")
+    (bookmarks . "book"))))
+  (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
+  #+END_SRC
+* EVIL MODE
+  #+BEGIN_SRC emacs-lisp
+  (use-package evil
+  :ensure t ;;install evil if not installed
+  :init ;; tweak evil's configuration before loading it
+  (setq evil-want-integration t)
+  (setq evil-want-keybinding nil)
+  ;;(evil-mode)
+  )
+  (use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init))
+  #+END_SRC
+
+* FONT
+  #+BEGIN_SRC emacs-lisp
+    (set-face-attribute 'default nil
+      :font "SauceCodePro Nerd Font 11"
+      :weight 'medium)
+    (set-face-attribute 'variable-pitch nil
+      :font "Ubuntu Nerd Font 11"
+      :weight 'medium)
+    (set-face-attribute 'fixed-pitch nil
+      :font "SauceCodePro Nerd Font 11"
+      :weight 'medium)
+    (setq-default line-spacing 0.10)
+    ;;Needed for client
+    (add-to-list 'default-frame-alist '(font . "SauceCodePro Nerd Font 11"))
+  #+END_SRC
+  **Zooming in and out
+  Use Ctrl = and Ctrl - to increase and decrease scale
+  #+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-=") 'text-scale-increase)
+  (global-set-key (kbd "C--") 'text-scale-decrease)
+  (global-set-key (kbd "C-0") '(lambda () (interactive) (text-scale-adjust 0)))
+  (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
+  (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
+  #+END_SRC
+* GUI SETTINGS
+  **All menu bars, tools bars
+  #+BEGIN_SRC emacs-lisp
+  (setq lazy-highlight-cleanup nil)
+  (menu-bar-mode -1)
+  (tool-bar-mode -1)
+  (scroll-bar-mode -1)
+  (global-display-line-numbers-mode 1)
+  (setq display-line-numbers-type 'relative)
+  #+END_SRC
+* PROCECTILE
+  #+BEGIN_SRC emacs-lisp
+  (use-package projectile
+  :ensure t
+  :config
+  (projectile-global-mode 1))
+  #+END_SRC
+* THEME
+  ** Doom emacs
+  #+BEGIN_SRC emacs-lisp
+  (use-package doom-themes
+  :ensure t)
+  (setq doom-themes-enable-bold t doom-themes-enable-italic t)
+  (load-theme 'doom-shades-of-purple t)
+  #+END_SRC
+  #+BEGIN_SRC emacs-lisp
+  (use-package all-the-icons
+  :ensure t)
+  #+END_SRC
+* MODE LINE
+  **doom mode line
+  #+BEGIN_SRC emacs-lisp
+  (use-package doom-modeline
+  :ensure t)
+  (doom-modeline-mode 1)
+  #+END_SRC
+
+* WHICH KEY
+  **give all the commands bound to a prefix key
+  #+BEGIN_SRC emacs-lisp
+  (use-package which-key
+  :ensure t)
+  (which-key-mode)
+  (which-key-setup-side-window-right-bottom)
+  #+END_SRC
+
+
+* WEB Development
+  **Modes and tools for web development
+  #+BEGIN_SRC emacs-lisp
+  (electric-pair-mode)
+  (emmet-mode)
+  (use-package js2-mode :ensure t)
+  (use-package emmet-mode :ensure t)
+  (use-package markdown-mode :ensure t)
+  (use-package web-mode :ensure t)
+  (use-package prettier :ensure t)
+  #+END_SRC
+* KEY CAST for displaying keys and commands in mode line
+  https://www.youtube.com/watch?v=L9GcNrhx-iE
+  **Modes and tools for web development
+  #+BEGIN_SRC emacs-lisp
+  (use-package keycast :ensure t)
+  (keycast-mode)
+  #+END_SRC
+* Company mode for autocompletion
+  #+BEGIN_SRC emacs-lisp
+  (use-package company :ensure t)
+  (company-mode)
+  #+END_SRC
