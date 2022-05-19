@@ -15,40 +15,7 @@
   (unless (package-installed-p 'use-package)
   (package-install 'use-package))
   #+END_SRC
-#* GENERAL KEYBINGINGS
-  #+BEGIN_SRC emacs-lisp
-  (use-package general
-    :ensure t
-    :config
-  (general-evil-setup t))
-  (nvmap :prefix "SPC"
-    "SPC" '(counsel-M-x :which-key "M-x")
-    "." '(find-file :which-key "Find file")
-    ;;Buffers
-    "b b" '(ibuffer :which-key "IBuffer")
-    "b k" '(kill-current-buffer :which-key "Kill current buffer")
-    "b n" '(next-buffer :which-key "Next buffer")
-    "b p" '(previous-buffer :which-key "Previous buffer")
-    "b B" '(ibuffer-list-buffers :which-key "IBuffer list buffers")
-    "b K" '(kill-buffer :which-key "Kill buffer")
-    ;;Eshell
-    "e h" '(counsel-esh-history :which-key "Eshell history")
-    "e s" '(eshell :which-key "Eshell")
-    "f r" '(counsel-recentf :which-key "Recent files")
-    "h r r" '((lambda () (interactive) (load-file "~/.emacs.d/init.el")) :whick-key "Reload emacs configuration")
-    "t t" '(toggle-truncate-lines :which-key "Toggle truncate lines")
-    ;;Windows motions
-    "w c" '(evil-window-delete :which-key "Close window")
-    "w n" '(evil-window-new :which-key "New window")
-    "w s" '(evil-window-split :which-key "Horizontal split window")
-    "w v" '(evil-window-vsplit :which-key "Vertical split window")
-    ;;Windows motions
-    "w h" '(evil-window-left :which-key "Goto left window")
-    "w j" '(evil-window-down :which-key "Goto down window")
-    "w k" '(evil-window-up :which-key "Goto up window")
-    "w l" '(evil-window-right :which-key "Goto right window")
-    "w w" '(evil-window-next :which-key "Goto next window"))
-  #+END_SRC
+
 * DASHBOARD
   Emacs dashboard is an extensible startup screen showing you recent files, bookmarks, agenda items, and an Emacs banner.
   #+BEGIN_SRC emacs-lisp
@@ -64,7 +31,6 @@
       (recents . 10)
       (agenda . 5)
       (bookmarks . 5)
-      (projects . 5)
       (registers . 5)
   ))
   :config
@@ -74,22 +40,6 @@
     (bookmarks . "book"))))
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   #+END_SRC
-* EVIL MODE
-  #+BEGIN_SRC emacs-lisp
-  (use-package evil
-  :ensure t ;;install evil if not installed
-  :init ;; tweak evil's configuration before loading it
-  (setq evil-want-integration t)
-  (setq evil-want-keybinding nil)
-  ;;(evil-mode)
-  )
-  (use-package evil-collection
-  :after evil
-  :ensure t
-  :config
-  (evil-collection-init))
-  #+END_SRC
-
 * FONT
   #+BEGIN_SRC emacs-lisp
     (set-face-attribute 'default nil
@@ -105,6 +55,7 @@
     ;;Needed for client
     (add-to-list 'default-frame-alist '(font . "SauceCodePro Nerd Font 11"))
   #+END_SRC
+* ZOOM
   **Zooming in and out
   Use Ctrl = and Ctrl - to increase and decrease scale
   #+BEGIN_SRC emacs-lisp
@@ -117,7 +68,7 @@
 * GUI SETTINGS
   **All menu bars, tools bars
   #+BEGIN_SRC emacs-lisp
-  (setq lazy-highlight-cleanup nil)
+  (setq lazy-highlight-cleanup nil) ;;This is to retain search highlight after searching is complete
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
@@ -157,10 +108,13 @@
   (use-package which-key
   :ensure t)
   (which-key-mode)
-  (which-key-setup-side-window-right-bottom)
+  (which-key-setup-side-window-bottom)
   #+END_SRC
 
-
+* MAGIT
+  #+begin_src emacs-lisp
+      (use-package magit :ensure t)
+  #+end_src
 * WEB Development
   **Modes and tools for web development
   #+BEGIN_SRC emacs-lisp
