@@ -40,21 +40,6 @@
     (bookmarks . "book"))))
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   #+END_SRC
-* FONT
-  #+BEGIN_SRC emacs-lisp
-    (set-face-attribute 'default nil
-      :font "SauceCodePro Nerd Font 11"
-      :weight 'medium)
-    (set-face-attribute 'variable-pitch nil
-      :font "Ubuntu Nerd Font 11"
-      :weight 'medium)
-    (set-face-attribute 'fixed-pitch nil
-      :font "SauceCodePro Nerd Font 11"
-      :weight 'medium)
-    (setq-default line-spacing 0.10)
-    ;;Needed for client
-    (add-to-list 'default-frame-alist '(font . "SauceCodePro Nerd Font 11"))
-  #+END_SRC
 * ZOOM
   **Zooming in and out
   Use Ctrl = and Ctrl - to increase and decrease scale
@@ -81,25 +66,6 @@
   :ensure t
   :config
   (projectile-global-mode 1))
-  #+END_SRC
-* THEME
-  ** Doom emacs
-  #+BEGIN_SRC emacs-lisp
-  (use-package doom-themes
-  :ensure t)
-  (setq doom-themes-enable-bold t doom-themes-enable-italic t)
-  (load-theme 'doom-shades-of-purple t)
-  #+END_SRC
-  #+BEGIN_SRC emacs-lisp
-  (use-package all-the-icons
-  :ensure t)
-  #+END_SRC
-* MODE LINE
-  **doom mode line
-  #+BEGIN_SRC emacs-lisp
-  (use-package doom-modeline
-  :ensure t)
-  (doom-modeline-mode 1)
   #+END_SRC
 
 * WHICH KEY
@@ -137,4 +103,39 @@
   #+BEGIN_SRC emacs-lisp
   (use-package company :ensure t)
   (company-mode)
+  #+END_SRC
+* GOLDPLATING
+** FONT
+  #+BEGIN_SRC emacs-lisp
+    (set-face-attribute 'default nil
+      :font "SauceCodePro Nerd Font 11"
+      :weight 'medium)
+    (set-face-attribute 'variable-pitch nil
+      :font "Ubuntu Nerd Font 11"
+      :weight 'medium)
+    (set-face-attribute 'fixed-pitch nil
+      :font "SauceCodePro Nerd Font 11"
+      :weight 'medium)
+    (setq-default line-spacing 0.10)
+    ;;Needed for client
+    (add-to-list 'default-frame-alist '(font . "SauceCodePro Nerd Font 11"))
+  #+END_SRC
+** THEME
+  ** Doom emacs
+  #+BEGIN_SRC emacs-lisp
+  (use-package doom-themes
+  :ensure t)
+  (setq doom-themes-enable-bold t doom-themes-enable-italic t)
+  (load-theme 'doom-shades-of-purple t)
+  #+END_SRC
+  #+BEGIN_SRC emacs-lisp
+  (use-package all-the-icons
+  :ensure t)
+  #+END_SRC
+** MODE LINE
+  **doom mode line
+  #+BEGIN_SRC emacs-lisp
+  (use-package doom-modeline
+  :ensure t)
+  (doom-modeline-mode 1)
   #+END_SRC
