@@ -104,6 +104,11 @@
   (use-package company :ensure t)
   (company-mode)
   #+END_SRC
+* BUFFER MENU Customizations
+** Auto-completion ignore case
+  #+BEGIN_SRC emacs-lisp
+  (setq completion-ignore-case t)
+  #+END_SRC
 * GOLDPLATING
 ** FONT
   #+BEGIN_SRC emacs-lisp
