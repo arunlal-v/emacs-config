@@ -84,13 +84,13 @@
 * WEB Development
   **Modes and tools for web development
   #+BEGIN_SRC emacs-lisp
-  (electric-pair-mode)
-  (emmet-mode)
   (use-package js2-mode :ensure t)
   (use-package emmet-mode :ensure t)
   (use-package markdown-mode :ensure t)
   (use-package web-mode :ensure t)
   (use-package prettier :ensure t)
+  (electric-pair-mode 1)
+  (emmet-mode 1)
   #+END_SRC
 * KEY CAST for displaying keys and commands in mode line
   https://www.youtube.com/watch?v=L9GcNrhx-iE
