@@ -108,6 +108,8 @@
 ** Auto-completion ignore case
   #+BEGIN_SRC emacs-lisp
   (setq completion-ignore-case t)
+  (setq read-file-name-completion-ignore-case t)
+  (setq read-buffer-completion-ignore-case t)
   #+END_SRC
 * GOLDPLATING
 ** FONT
