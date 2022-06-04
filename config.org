@@ -50,10 +50,14 @@
   (global-set-key (kbd "<C-wheel-up>") 'text-scale-increase)
   (global-set-key (kbd "<C-wheel-down>") 'text-scale-decrease)
   #+END_SRC
-* GUI SETTINGS
+* SEARCH SETTINGS
   **All menu bars, tools bars
   #+BEGIN_SRC emacs-lisp
   (setq lazy-highlight-cleanup nil) ;;This is to retain search highlight after searching is complete
+  #+END_SRC
+* GUI SETTINGS
+  **All menu bars, tools bars
+  #+BEGIN_SRC emacs-lisp
   (menu-bar-mode -1)
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
