@@ -101,7 +101,7 @@
   **Modes and tools for web development
   #+BEGIN_SRC emacs-lisp
   (use-package keycast :ensure t)
-  (keycast-mode)
+;;  (keycast-mode) ;;  Disable keycast mode by default
   #+END_SRC
 * Company mode for autocompletion
   #+BEGIN_SRC emacs-lisp
