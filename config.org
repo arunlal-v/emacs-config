@@ -84,6 +84,7 @@
 * MAGIT
   #+begin_src emacs-lisp
       (use-package magit :ensure t)
+      (setq magit-clone-set-remote-head t) ;;Preserve git's default of setting remote head, instead of magit's delete
   #+end_src
 * WEB Development
   **Modes and tools for web development
