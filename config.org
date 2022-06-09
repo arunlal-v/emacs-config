@@ -19,6 +19,7 @@
 * DASHBOARD
   Emacs dashboard is an extensible startup screen showing you recent files, bookmarks, agenda items, and an Emacs banner.
   #+BEGIN_SRC emacs-lisp
+  (use-package all-the-icons :ensure t) ;;Make sure all-the-icons package is installed
   (use-package dashboard
   :ensure t ;;install dashboard if not installed
   :init ;; tweak dashboard's configuration before loading it
@@ -118,6 +119,9 @@
   #+END_SRC
 * GOLDPLATING
 ** FONT
+  All fonts can be found at
+  https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro/Regular/complete
+  https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Ubuntu/Regular/complete
   #+BEGIN_SRC emacs-lisp
     (set-face-attribute 'default nil
       :font "SauceCodePro Nerd Font 11"
