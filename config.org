@@ -63,6 +63,7 @@
   (tool-bar-mode -1)
   (scroll-bar-mode -1)
   (global-display-line-numbers-mode 1)
+  (setq-default line-spacing 0.10)
   (setq display-line-numbers-type 'relative)
   #+END_SRC
 * PROCECTILE
@@ -132,7 +133,6 @@
     (set-face-attribute 'fixed-pitch nil
       :font "SauceCodePro Nerd Font 11"
       :weight 'medium)
-    (setq-default line-spacing 0.10)
     ;;Needed for client
     (add-to-list 'default-frame-alist '(font . "SauceCodePro Nerd Font 11"))
   #+END_SRC
