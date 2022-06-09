@@ -125,6 +125,8 @@
   All fonts can be found at
   https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/SourceCodePro/Regular/complete
   https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Ubuntu/Regular/complete
+  For windows, the font name should be different. This name can be found in the font manager against the tag Font Name.
+  For instance, the below mentioned fonts will be "SauceCodePro NF 11" and "Ubuntu NF 11"
   #+BEGIN_SRC emacs-lisp
     (set-face-attribute 'default nil
       :font "SauceCodePro Nerd Font 11"
