@@ -120,6 +120,10 @@
   (setq read-file-name-completion-ignore-case t)
   (setq read-buffer-completion-ignore-case t)
   #+END_SRC
+* HISTORY
+  #+BEGIN_SRC emacs-lisp
+  (savehist-mode 1)
+  #+END_SRC
 * GOLDPLATING
 ** FONT
   All fonts can be found at
