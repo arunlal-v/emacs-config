@@ -111,7 +111,7 @@
 * Company mode for autocompletion
   #+BEGIN_SRC emacs-lisp
   (use-package company :ensure t)
-  (company-mode)
+  (company-mode 1)
   #+END_SRC
 * BUFFER MENU Customizations
 ** Auto-completion ignore case
