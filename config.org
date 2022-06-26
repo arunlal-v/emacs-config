@@ -16,7 +16,7 @@
   #+END_SRC
 
 * ORG Mode display preferences
-   https://raw.githubusercontent.com/hrs/dotfiles/main/emacs/.config/emacs/configuration.org
+   [[https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org][Harry's dotfiles]]
    I like to see an outline of pretty bullets instead of a list of asterisks.
 
 #+begin_src emacs-lisp
