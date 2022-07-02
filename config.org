@@ -1,5 +1,11 @@
 #+TITLE: My Emacs Config
 #+AUTHOR: Arunlal
+* SENSIBLE DEFAULTS
+** KEYMAPS REBINDING
+*** Prevent dired from using new buffers for all traversed directories
+  #+BEGIN_SRC emacs-lisp
+    (setf dired-kill-when-opening-new-dired-buffer t)
+  #+END_SRC
 * PACKAGE MANAGEMENT
   ** Setup package.el to work with MELPA
   #+BEGIN_SRC emacs-lisp
