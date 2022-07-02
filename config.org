@@ -132,7 +132,7 @@
   (setq lazy-highlight-cleanup nil) ;;This is to retain search highlight after searching is complete
   #+END_SRC
 * GUI SETTINGS
-  **All menu bars, tools bars
+** All menu bars, tools bars
   #+BEGIN_SRC emacs-lisp
   (menu-bar-mode -1)
   (tool-bar-mode -1)
@@ -140,6 +140,12 @@
   (global-display-line-numbers-mode 1)
   (setq-default line-spacing 0.10)
   (setq display-line-numbers-type 'relative)
+  #+END_SRC
+** Cursor
+  #+BEGIN_SRC emacs-lisp
+    (use-package beacon
+    :ensure t)
+    (beacon-mode 1)
   #+END_SRC
 * PROCECTILE
   #+BEGIN_SRC emacs-lisp
