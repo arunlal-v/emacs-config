@@ -1,11 +1,82 @@
 #+TITLE: My Emacs Config
 #+AUTHOR: Arunlal
 * SENSIBLE DEFAULTS
-** KEYMAPS REBINDING
-*** Prevent dired from using new buffers for all traversed directories
+** VARIABLES
+*** Prevent dired from using new buffers for all traversed directories (Since emacs 28)
   #+BEGIN_SRC emacs-lisp
     (setf dired-kill-when-opening-new-dired-buffer t)
   #+END_SRC
+*** Auto saves and backup in temp directory
+  #+begin_src emacs-lisp
+  (setq backup-directory-alist
+        `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+        `((".*" ,temporary-file-directory t)))
+  #+end_src
+*** Default directory will be home directory
+#+begin_src emacs-lisp
+  (global-set-key (kbd "M-;")
+		  'sensible-defaults/comment-or-uncomment-region-or-line)
+#+end_src
+*** GC threshold to higher value
+#+begin_src emacs-lisp
+  (setq gc-cons-threshold 20000000)
+#+end_src
+*** Delete selection mode
+#+begin_src emacs-lisp
+  (delete-selection-mode t)
+#+end_src
+*** Add file sizes in human-readable units (KB, MB, etc) to dired buffers.
+#+begin_src emacs-lisp
+  (setq-default dired-listing-switches "-alh")
+#+end_src
+*** Don't ask `yes/no?', ask `y/n?'.
+#+begin_src emacs-lisp
+  (fset 'yes-or-no-p 'y-or-n-p)
+#+end_src
+*** Auto refresh buffers
+#+begin_src emacs-lisp
+  (global-auto-revert-mode t)
+#+end_src
+*** Visible bell
+#+begin_src emacs-lisp
+  (setq visible-bell t)
+#+end_src
+** KEYMAPS REBINDING
+*** Home and End key settings
+  #+BEGIN_SRC emacs-lisp
+    (global-set-key (kbd "<home>") 'move-beginning-of-line)
+    (global-set-key (kbd "<end>") 'move-end-of-line)
+  #+END_SRC
+*** Comment single line or region
+#+begin_src emacs-lisp
+    (defun sensible-defaults/comment-or-uncomment-region-or-line ()
+    "Comments or uncomments the region or the current line if
+  there's no active region."
+    (interactive)
+    (let (beg end)
+      (if (region-active-p)
+	  (setq beg (region-beginning) end (region-end))
+	(setq beg (line-beginning-position) end (line-end-position)))
+      (comment-or-uncomment-region beg end)))
+   (global-set-key (kbd "M-;")
+                  'sensible-defaults/comment-or-uncomment-region-or-line)
+#+end_src
+** HOOKS
+*** Trim trailing whitespaces before saving
+#+begin_src emacs-lisp
+  (add-hook 'before-save-hook 'delete-trailing-whitespace)
+#+end_src
+*** Prompt to create parent directories, if not exists, when saving file
+#+begin_src emacs-lisp
+  (add-hook 'before-save-hook
+            (lambda ()
+              (when buffer-file-name
+                (let ((dir (file-name-directory buffer-file-name)))
+                  (when (and (not (file-exists-p dir))
+                             (y-or-n-p (format "Directory %s does not exist. Create it?" dir)))
+                    (make-directory dir t))))))
+#+end_src
 * PACKAGE MANAGEMENT
   ** Setup package.el to work with MELPA
   #+BEGIN_SRC emacs-lisp
