@@ -190,11 +190,11 @@
   (dashboard-modify-heading-icons '(
     (recents. "file-text")
     (bookmarks . "book"))))
-  ;;This is for client mode  
+  ;;This is for client mode
   (setq initial-buffer-choice (lambda () (get-buffer "*dashboard*")))
   #+END_SRC
 * ZOOM
-  **Zooming in and out
+** Zooming in and out
   Use Ctrl = and Ctrl - to increase and decrease scale
   #+BEGIN_SRC emacs-lisp
   (global-set-key (kbd "C-=") 'text-scale-increase)
