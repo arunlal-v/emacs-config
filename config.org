@@ -254,6 +254,7 @@
 #+begin_src emacs-lisp
   (use-package highlight-numbers :ensure t)
   (add-hook 'prog-mode-hook 'highlight-numbers-mode)
+  (add-hook 'sql-mode-hook 'highlight-numbers-mode)
 #+end_src
 * PROCECTILE
   #+BEGIN_SRC emacs-lisp
