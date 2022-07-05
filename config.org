@@ -1,5 +1,10 @@
 #+TITLE: My Emacs Config
 #+AUTHOR: Arunlal
+* NAVIGATION and SELECTION ENHANCEMENTS
+** Select quicker using expand-region
+#+begin_src emacs-lisp
+  (use-package expand-region :ensure t :bind ("C-;" . er/expand-region))
+#+end_src
 * SENSIBLE DEFAULTS
 ** VARIABLES
 *** Prevent dired from using new buffers for all traversed directories (Since emacs 28)
