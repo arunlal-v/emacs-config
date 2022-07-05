@@ -1,10 +1,5 @@
 #+TITLE: My Emacs Config
 #+AUTHOR: Arunlal
-* NAVIGATION and SELECTION ENHANCEMENTS
-** Select quicker using expand-region
-#+begin_src emacs-lisp
-  (use-package expand-region :ensure t :bind ("C-;" . er/expand-region))
-#+end_src
 * SENSIBLE DEFAULTS
 ** VARIABLES
 *** Prevent dired from using new buffers for all traversed directories (Since emacs 28)
@@ -101,6 +96,11 @@
   (package-install 'use-package))
   #+END_SRC
 
+* NAVIGATION and SELECTION ENHANCEMENTS
+** Select quicker using expand-region
+#+begin_src emacs-lisp
+  (use-package expand-region :ensure t :bind ("C-;" . er/expand-region))
+#+end_src
 * ORG Mode display preferences
    [[https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org][Harry's dotfiles]]
    I like to see an outline of pretty bullets instead of a list of asterisks.
@@ -233,6 +233,11 @@
     :ensure t)
     (beacon-mode 1)
   #+END_SRC
+** Volatile highlights
+#+begin_src emacs-lisp
+  (use-package volatile-highlights :ensure t)
+  (volatile-highlights-mode t)
+#+end_src
 * PROCECTILE
   #+BEGIN_SRC emacs-lisp
   (use-package projectile
