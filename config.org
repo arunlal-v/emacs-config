@@ -250,6 +250,11 @@
   (use-package volatile-highlights :ensure t)
   (volatile-highlights-mode t)
 #+end_src
+** Highlight numbers
+#+begin_src emacs-lisp
+  (use-package highlight-numbers :ensure t)
+  (add-hook 'prog-mode-hook 'highlight-numbers-mode)
+#+end_src
 * PROCECTILE
   #+BEGIN_SRC emacs-lisp
   (use-package projectile
