@@ -101,6 +101,12 @@
 #+begin_src emacs-lisp
   (use-package expand-region :ensure t :bind ("C-;" . er/expand-region))
 #+end_src
+* Text Movement
+** Move text using MoveText
+#+begin_src emacs-lisp
+  (use-package move-text :ensure t)
+  (move-text-default-bindings)
+#+end_src
 * ORG Mode display preferences
    [[https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org][Harry's dotfiles]]
    I like to see an outline of pretty bullets instead of a list of asterisks.
