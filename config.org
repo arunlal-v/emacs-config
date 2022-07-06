@@ -113,6 +113,13 @@
   (global-hungry-delete-mode  1)
   (setq hungry-delete-join-reluctantly t)
 #+end_src
+* Dired-x for opening multiple files at once
+This will replace find-file and find-file-other-window with the dired-x equivalents
+This will allow multiple files to be opened at once
+#+begin_src emacs-lisp
+    (with-eval-after-load 'dired
+      (require 'dired-x))
+#+end_src
 * ORG Mode display preferences
    [[https://github.com/hrs/dotfiles/blob/main/emacs/.config/emacs/configuration.org][Harry's dotfiles]]
    I like to see an outline of pretty bullets instead of a list of asterisks.
