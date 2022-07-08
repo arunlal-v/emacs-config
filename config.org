@@ -194,6 +194,17 @@ This will allow multiple files to be opened at once
 #+begin_src emacs-lisp
   (setq org-insert-heading-respect-content t)
 #+end_src
+Variable font
+Display different fonts
+#+begin_src emacs-lisp
+;; Highlight Line Colors
+(add-hook 'org-mode-hook (lambda ()
+(set-face-attribute 'org-level-1 nil                   :font "SauceCodePro Nerd Font" :height 220 :foreground "#FDF0ED")
+(set-face-attribute 'org-level-2 nil                   :font "Ubuntu Nerd Font" :height 200 :foreground "#25B2BC")
+(set-face-attribute 'org-level-3 nil                   :font "Ubuntu Nerd Font" :height 180)
+(set-face-attribute 'org-level-4 nil                   :font "Ubuntu Nerd Font" :height 160 :italic nil)
+))
+#+end_src
 * DASHBOARD
   Emacs dashboard is an extensible startup screen showing you recent files, bookmarks, agenda items, and an Emacs banner.
   #+BEGIN_SRC emacs-lisp
