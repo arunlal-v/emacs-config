@@ -274,14 +274,6 @@ Display different fonts
   (add-hook 'prog-mode-hook 'highlight-numbers-mode)
   (add-hook 'sql-mode-hook 'highlight-numbers-mode)
 #+end_src
-* PROCECTILE
-  #+BEGIN_SRC emacs-lisp
-  (use-package projectile
-  :ensure t
-  :config
-  (projectile-global-mode 1))
-  #+END_SRC
-
 * WHICH KEY
   **give all the commands bound to a prefix key
   #+BEGIN_SRC emacs-lisp
@@ -296,17 +288,6 @@ Display different fonts
       (use-package magit :ensure t)
       (setq magit-clone-set-remote-head t) ;;Preserve git's default of setting remote head, instead of magit's delete
   #+end_src
-* WEB Development
-  **Modes and tools for web development
-  #+BEGIN_SRC emacs-lisp
-  (use-package js2-mode :ensure t)
-  (use-package emmet-mode :ensure t)
-  (use-package markdown-mode :ensure t)
-  (use-package web-mode :ensure t)
-  (use-package prettier :ensure t)
-  (electric-pair-mode 1)
-  (emmet-mode 1)
-  #+END_SRC
 * KEY CAST for displaying keys and commands in mode line
   https://www.youtube.com/watch?v=L9GcNrhx-iE
   **Modes and tools for web development
@@ -316,8 +297,9 @@ Display different fonts
   #+END_SRC
 * Company mode for autocompletion
   #+BEGIN_SRC emacs-lisp
-  (use-package company :ensure t)
-  (company-mode 1)
+    (use-package company :ensure t)
+    (company-mode 1)
+    (add-hook 'after-init-hook 'global-company-mode)
   #+END_SRC
 * BUFFER MENU Customizations
 ** Auto-completion ignore case
@@ -329,6 +311,26 @@ Display different fonts
 * HISTORY
   #+BEGIN_SRC emacs-lisp
   (savehist-mode 1)
+  #+END_SRC
+* PROCECTILE
+  #+BEGIN_SRC emacs-lisp
+    (use-package projectile
+    :ensure t
+    :config
+    (projectile-global-mode 1))
+    (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
+  #+END_SRC
+
+* WEB Development
+  **Modes and tools for web development
+  #+BEGIN_SRC emacs-lisp
+  (use-package js2-mode :ensure t)
+  (use-package emmet-mode :ensure t)
+  (use-package markdown-mode :ensure t)
+  (use-package web-mode :ensure t)
+  (use-package prettier :ensure t)
+  (electric-pair-mode 1)
+  (emmet-mode 1)
   #+END_SRC
 * GOLDPLATING
 ** FONT
@@ -359,7 +361,7 @@ Display different fonts
   (load-theme 'doom-shades-of-purple t)
   #+END_SRC
 ** MODE LINE
-  **doom mode line
+*** doom mode line
   #+BEGIN_SRC emacs-lisp
   (use-package doom-modeline
   :ensure t)
