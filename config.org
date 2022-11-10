@@ -52,6 +52,11 @@
 	isearch-repeat-on-direction-change t
 	search-ring-max 100)
 #+end_src
+*** Scroll position to be not at topmost or bottommost line while scrolling
+#+begin_src emacs-lisp
+  (setq scroll-preserve-screen-position t)
+#+end_src
+
 ** KEYMAPS REBINDING
 *** Home and End key settings
   #+BEGIN_SRC emacs-lisp
