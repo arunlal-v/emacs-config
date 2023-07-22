@@ -216,6 +216,13 @@ Display different fonts
 (set-face-attribute 'org-level-4 nil                   :font "Ubuntu Nerd Font" :height 160 :italic nil)
 ))
 #+end_src
+
+    Format of date and validation fields when exported to html.
+
+#+begin_src emacs-lisp
+  (setq org-html-metadata-timestamp-format "%Y-%m-%d")
+  (setq org-html-validation-link nil)
+#+end_src
 * DASHBOARD
   Emacs dashboard is an extensible startup screen showing you recent files, bookmarks, agenda items, and an Emacs banner.
   #+BEGIN_SRC emacs-lisp
@@ -377,4 +384,9 @@ Display different fonts
   (use-package doom-modeline
   :ensure t)
   (doom-modeline-mode 1)
+  #+END_SRC
+* SPELL CHECKER
+** Hunspell
+  #+BEGIN_SRC emacs-lisp
+  ;;(setq-default ispell-program-name "D:/prog/hunspell/bin/hunspell.exe")
   #+END_SRC
